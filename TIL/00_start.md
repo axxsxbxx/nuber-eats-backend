@@ -2,7 +2,7 @@
 
 ## 1. NestJS 설치하기
 ```bash
-npm i -g @nestjs/cli
+npm i -g @nestjs/cli@^8.2.8
 ```
 
 ## 2. NestJS 프로젝트 생성하기
