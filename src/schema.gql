@@ -6,7 +6,7 @@ type Restaurant {
   name: String!
   isVegan: Boolean!
   address: String!
-  ownerName: String!
+  ownersName: String!
 }
 
 type Query {
@@ -14,5 +14,5 @@ type Query {
 }
 
 type Mutation {
-  createRestaurant(ownersName: String!, address: String!, isVegan: Boolean!, name: String!): Boolean!
+  createRestaurant(name: String!, isVegan: Boolean!, address: String!, ownersName: String!): Boolean!
 }
