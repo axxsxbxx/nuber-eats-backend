@@ -1,10 +1,10 @@
 import { Query, Resolver } from '@nestjs/graphql';
+import { Restaurant } from './entities/restaurant.entity';
 
-@Resolver()
+@Resolver(of => Restaurant)
 export class RestaurantResolver {
-  @Query((returns) => Boolean)
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  isPizzaGood(): Boolean {
+  @Query(() => Restaurant)
+  myRestaurant() {
     return true;
   }
 }

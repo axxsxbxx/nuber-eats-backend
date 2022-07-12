@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Restaurant {
+  namse: String!
+  isGood: Boolean
+}
+
 type Query {
-  isPizzaGood: Boolean!
+  myRestaurant: Restaurant!
 }
