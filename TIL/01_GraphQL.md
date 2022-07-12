@@ -26,7 +26,7 @@ rules: {
   }
   ```
 
-  ## 4. Argument 받는 방법
+  ## 4. Argument 받는 방법(#1.4)
   ### 1) `@Args` 사용
   ```typescript
     @Args('name') name: string,
@@ -52,4 +52,17 @@ export class CreateRestaurantDto {
   @Field(type => String)
   ownersName: string;
 }
+```
+
+## 5. Class validator 사용
+### 1) 설치하기
+```bash
+npm i class-validator
+// npm i class-transformer
+```
+
+### 2) 파이프라인 적용하기
+- `main.ts`에 파이프라인을 적용해준다.
+```typescript
+  app.useGlobalPipes(new ValidationPipe());
 ```
