@@ -3,10 +3,10 @@
 # ------------------------------------------------------
 
 type Restaurant {
-  namse: String!
+  name: String!
   isGood: Boolean
 }
 
 type Query {
-  myRestaurant: Restaurant!
+  restaurants(veganOnly: Boolean!): [Restaurant!]!
 }
