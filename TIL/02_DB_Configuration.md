@@ -85,12 +85,50 @@ npm i cross-env
 ```
 - `package.json` 변경하기
 ```json
-"start:dev": "cross-env ENV=dev nest start --watch",
+"start": "cross-env NODE_ENV=prod nest start",
+"start:dev": "cross-env NODE_ENV=dev nest start --watch",
 ```
 - app에 적용하기
-```bash
+```typescript
 ConfigModule.forRoot({
     isGlobal: true,
-    envFilePath: process.env.NODE_ENV === 'dev' ? '.dev.env' : '.test.env',
+    envFilePath: process.env.NODE_ENV === 'dev' ? '.env.dev' : '.env.',
+    ignoreEnvFile: process.env.NODE_ENV === 'prod',
+}),
+```
+- `.env` 파일 생성하기
+```text
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=subin
+DB_PASSWORD=12345
+DB_NAME=nuber-eats
+```
+
+## 4. Joi 활용하기
+
+### 1) 설정하기
+- 설치하기
+```bash
+npm i joi
+```
+- app에 적용하기
+```typescript
+ConfigModule.forRoot({
+    validationSchema: Joi.object({
+    NODE_ENV: Joi.string().valid('dev', 'prod').required(),
+    DB_HOST: Joi.string().required(),
+    DB_PORT: Joi.string().required(),
+    DB_USERNAME: Joi.string().required(),
+    DB_PASSWORD: Joi.string().required(),
+    DB_NAME: Joi.string().required(),
+    }),
+}),
+TypeOrmModule.forRoot({
+    host: process.env.DB_HOST,
+    port: +process.env.DB_PORT,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 }),
 ```
