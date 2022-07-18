@@ -29,8 +29,9 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
       // localhost로 연결하면 postgres는 pwd 물어보지 않음
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      // production 환경이 아니면 synchronize, logging 되지 않음
       synchronize: process.env.NODE_ENV !== 'prod',
-      logging: true,
+      logging: process.env.NODE_ENV !== 'prod',
       entities: [Restaurant],
     }),
     GraphQLModule.forRoot({

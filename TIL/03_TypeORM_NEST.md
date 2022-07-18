@@ -36,3 +36,32 @@ TypeOrmModule.forRoot({
 }),
 ```
 
+## 2. Inject Repository
+- `module`에서 `entity`를 import 한다.
+  - `forFeature`은 TypeOrmModule이 특정 feature를 import할 수 있게 해준다.
+```typescript
+@Module({
+  imports: [TypeOrmModule.forFeature([Restaurant])],
+  providers: [RestaurantResolver, RestaurantService],
+})
+```
+- `service`를 작성한다.
+```typescript
+@Injectable()
+export class RestaurantService {
+  constructor(
+    // 괄호 안에는 entity가 들어가야만 한다.
+    @InjectRepository(Restaurant)
+    // restaurants는 Restaurant의 repository이다 -- Data Mapper 형식에서의 repository
+    private readonly restaurants: Repository<Restaurant>,
+  ) {}
+  getAll(): Promise<Restaurant[]> {
+    return this.restaurants.find();
+  }
+}
+```
+- `resolver`에 `service`를 import한다.
+  - `service`는 `module`의 `providers`에도 추가되어야 class에 inject할 수 있다.(위의 코드 참고)
+```typescript
+constructor(private readonly restaurantService: RestaurantService) {}
+```
