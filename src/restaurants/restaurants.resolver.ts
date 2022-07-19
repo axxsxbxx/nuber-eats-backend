@@ -27,10 +27,14 @@ export class RestaurantResolver {
 
   @Mutation(returns => Boolean)
   async updateRestaurant(
-    // 인자를 많이 넘겨줘야 하기 때문에 효율적이지 않을 수 있다.
-    @Args('id') id: number,
-    @Args('data') data: UpdateRestaurantDto,
-  ) {
-    return true;
+    @Args() UpdateRestaurantDto: UpdateRestaurantDto,
+  ): Promise<boolean> {
+    try {
+      await this.restaurantService.updateRestaurant(UpdateRestaurantDto);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
   }
 }
