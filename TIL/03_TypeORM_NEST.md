@@ -65,3 +65,13 @@ export class RestaurantService {
 ```typescript
 constructor(private readonly restaurantService: RestaurantService) {}
 ```
+
+## 3. Create Method
+> `Method` : class안에 있는 function
+- `create`는 DB를 전혀 건들이지 않고 새로운 instance를 생성한다.
+- DB에 저장하고 싶다면 `save` method를 사용해야 한다.
+- entity에는 추가했는데, dto에 해당 컬럼을 추가하지 않는다면 에러가 발생한다.
+  - 이럴 때 `Mapped Type`을 사용한다. [Mapped Type](https://docs.nestjs.com/graphql/mapped-types)
+  - Type 종류가 일치하지 않을 때 에러가 발생하는데, 해결 방안은 두가지가 있다.
+    - Mapped Type의 인자로 타입 종류를 넘겨준다.
+    - entity에 `@InputType({ isAbstract: true })` 데코레이터를 추가한다.
