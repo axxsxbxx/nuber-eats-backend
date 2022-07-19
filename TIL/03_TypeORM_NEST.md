@@ -75,3 +75,10 @@ constructor(private readonly restaurantService: RestaurantService) {}
   - Type 종류가 일치하지 않을 때 에러가 발생하는데, 해결 방안은 두가지가 있다.
     - Mapped Type의 인자로 타입 종류를 넘겨준다.
     - entity에 `@InputType({ isAbstract: true })` 데코레이터를 추가한다.
+
+
+## 4. Update
+- `resolver`에 Mutation을 만들고, 인자로 넘겨줄 수 있지만 대부분 class로 dto 하나만 만드는 것을 더 선호한다.
+- `service`에 update method를 사용한다.
+  - `update`는 db에 entity가 있는지 없는지 확인하지 않고 update 쿼리를 실행한다. 따라서 Promise 객체를 반환한다.
+  - 따라서 존재하지 않는 아이디를 넣거나 무언가를 찾더라도 에러가 발생하지 않는다.
