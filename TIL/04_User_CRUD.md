@@ -17,6 +17,20 @@ nest g mo common
     - password
     - role(client|owner|delivery)
 
+
+## 2. Hashing Passwords
+> `hash` : 단방향 함수(one-way function)
+### [Listener and Subscribers](https://typeorm.io/listeners-and-subscribers)
+- Listener : 기본적으로 entity에 무슨 일이 생길 때 실행되는 것
+### [bcypt 사용](https://www.npmjs.com/package/bcrypt)
+- hash하고 hash 확인하는 것에 사용
+```bash
+npm i bcrypt
+npm i @types/bcrypt --dev-only 
+```
+
+
+
 ## User CRUD:
 
 - Create Account
