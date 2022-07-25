@@ -28,14 +28,3 @@ nest g mo common
 npm i bcrypt
 npm i @types/bcrypt --dev-only 
 ```
-
-
-
-## User CRUD:
-
-- Create Account
-- Log In
-- See Profile
-- Edit Profile
-- Verify Email
-
