@@ -10,14 +10,25 @@ npm i jsonwebtoken
 npm i @types/jsonwebtoken --only-dev
 ```
 - 사용자들 역시 token 내부에 담긴 정보를 알 수 있다.
-    - token에 담긴 정보는 알아내기 어려운 것이 아니다.
+    - token에 담긴 정보는 알아내기 어려운 것이 아니다. 따라서 token에 너무 많은 정보를 넣어서는 안 된다.
 - `.env` 파일에 SECRET_KEY를 추가해준다.
     - [Random Key Generator 참고 사이트](https://randomkeygen.com/)
 - `app.module.ts > ConfigModule`에 SECRET_KEY를 추가해준다.
     `SECRET_KEY: Joi.string().required()`
 - `user.module.ts`에 `ConfigService`를 import 해준다.
+- `dependency inject` 덕분에 간단하게 구현 가능한 것이다.
+    - 원하는 class를 적어주면 nestjs가 그 정보를 자동으로 가져다 주는 것을 의미
 
 ## 2. Create Own JWT Modules
+- 모듈의 종류
+    - `static module` : 어떤 설정도 되어있지 않은 정적인 모듈
+    - `dynamic module` : `.forRoot`와 같이 설정이 적용되어 있는 모듈
+    - 동적 모듈은 결과적으로 정적 모듈이 된다. 동적 모듈은 중간 과정이라고 볼 수 있다.
+- 모듈 생성하기
 ```bash
 nest g mo jwt
 ```
+
+## 3. [MiddleWare](https://docs.nestjs.com/middleware#middleware)
+- `main.ts`의 `app.use()`에는 functional middleware만 사용 가능하다.
+    - class middleware는 `app.module`에서 사용해야 한다.
