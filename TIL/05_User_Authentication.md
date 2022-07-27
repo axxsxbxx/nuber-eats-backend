@@ -32,3 +32,12 @@ nest g mo jwt
 ## 3. [MiddleWare](https://docs.nestjs.com/middleware#middleware)
 - `main.ts`의 `app.use()`에는 functional middleware만 사용 가능하다.
     - class middleware는 `app.module`에서 사용해야 한다.
+- http기술은 `header`을 사용하기 위해서 middleware을 사용한다.
+    - header를 가져와서 만든 `jwtService.verify()`를 사용한다.
+- request object를 제어할 수 있다.
+
+## 5. AuthGuard and Deorator
+- guard는 function의 기능을 보충해준다.
+    - `canActivate` 함수는 true 또는 false를 반환해야 한다.
+        - true를 return하면 request를 진행시키고, false를 return하면 request를 중지시킨다.
+- decorator는 value를 return한다.
