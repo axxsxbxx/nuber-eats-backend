@@ -29,3 +29,18 @@ async hashPassword(): Promise<void> {
     }
 }
 ```
+
+## 3. [MailGun](https://www.mailgun.com/) 이용하기
+- [Receive-SMSS](https://receive-smss.com/)를 활용해서 fake 번호를 생성할 수도 있다.
+
+## 4. `GOT` 설치하기
+- `request`와 동일한 역할을 한다.
+```typescript
+npm i got@11.8.3
+```
+
+## 5. `Form Data NPM` 설치하기
+- node.js에서 스트림을 만드는 라이브러리
+```typescript
+npm i form-data
+```
